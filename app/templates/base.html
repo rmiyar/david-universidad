@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mi Aplicación Django{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>{% block header %}PROYECTO UNIVERSIDAD{% endblock %}</h1>
+    </header>
+      {% if user.is_authenticated %}
+        <nav>
+            <a href="/">Inicio</a>
+            <a href="/about">Acerca de</a>
+            {% for group in user.groups.all %}
+                {% if group.name == "ESTUDIANTES" %}
+                    <!-- Enlaces específicos para estudiantes -->
+                    <a href="/cursos">Mis Cursos</a>
+                {% elif group.name == "PROFESORES" %}
+                    <!-- Enlaces específicos para profesores -->
+                    <a href="/panel-profesor">Panel Profesor</a>
+                    <a href="/gestion-cursos">Gestión de Cursos</a>
+                {% endif %}
+            {% endfor %}
+        </nav>
+    {% endif %}
+    <div class="container">
+        {% block content %}
+        <!-- Contenido principal -->
+        {% endblock %}
+    </div>
+    <footer>
+        <p>{% block footer %}Derechos reservados © 2024{% endblock %}</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,125 @@
+/* Estilos generales del cuerpo del documento */
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para cabecera y pie de página */
+header, footer {
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    background-color: #333;
+}
+
+/* Estilos para navegación */
+nav {
+    background-color: #444;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav a {
+    color: #fff;
+    padding: 10px 15px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: #555;
+}
+
+/* Contenedor principal */
+.container {
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Estilos para los botones */
+button, input[type="submit"], input[type="button"] {
+    background-color: #5c67f2;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover, input[type="submit"]:hover, input[type="button"]:hover {
+    background-color: #737df9;
+}
+
+/* Estilos para campos de texto */
+input[type="text"], input[type="password"], textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Asegura que padding y border estén incluidos en el ancho total */
+}
+
+/* Estilos para listas */
+ul {
+    list-style-type: none; /* Remueve los puntos de la lista */
+    padding: 0;
+}
+
+ul li {
+    padding: 8px;
+    margin-bottom: 2px;
+    background-color: #ddd;
+    border-left: 5px solid #333;
+}
+
+ul li:hover {
+    background-color: #ccc;
+}
+
+.login-container {
+    max-width: 360px;  /* Limita el ancho del contenedor del formulario */
+    margin: 50px auto; /* Centra el formulario en la página */
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border-radius: 5px;
+}
+
+.login-form p {
+    margin: 10px 0; /* Espacio entre los campos del formulario */
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    width: 100%; /* Hace que los inputs tomen todo el ancho del contenedor */
+    padding: 8px;
+    margin: 5px 0; /* Espacio vertical entre inputs */
+    box-sizing: border-box; /* Incluye el padding y border en el ancho */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #5C67F2; /* Un color azul para el botón */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.login-button:hover {
+    background-color: #4a54f1; /* Un tono más oscuro al pasar el mouse */
+}
+

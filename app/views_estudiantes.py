@@ -19,11 +19,11 @@ class ListaCursoMateria(ListView):
     context_object_name = 'cursos_materia'
 
     def get_queryset(self):
-        # Obtener el usuario autenticado y el estudiante asociado
+        
         auth_user = AuthUser.objects.get(id=self.request.user.id)
         estudiante = Estudiante.objects.get(usuario=auth_user)
 
-        # Filtrar las materias que aún no ha seleccionado el estudiante
+        
         materias_seleccionadas = EstudianteMateria.objects.filter(estudiante=estudiante).values_list('curso_materia__id_materia', flat=True)
         return CursoMateria.objects.exclude(id_materia__in=materias_seleccionadas)
 
@@ -34,12 +34,12 @@ class SeleccionarMateria(LoginRequiredMixin, View):
         curso_id = request.POST.get('curso_id')
         
         try:
-            # Obtener el usuario autenticado
+            
             auth_user = AuthUser.objects.get(id=request.user.id)
             estudiante = Estudiante.objects.get(usuario=auth_user)
             curso_materia = CursoMateria.objects.get(id_materia=curso_id)
             
-            # Crear la relación EstudianteMateria si no existe
+            
             EstudianteMateria.objects.get_or_create(estudiante=estudiante, curso_materia=curso_materia)
             
         except ObjectDoesNotExist as e:
@@ -65,7 +65,7 @@ class ListaCursoMateriaSeleccionada(ListView):
         context = super().get_context_data(**kwargs)
         total_cost = len(context['cursos_materia_seleccionada']) * 50
         context['total_cost'] = total_cost
-        context['metodos_pago'] = PagosMetodo.objects.all()  # Obtener todos los métodos de pago
+        context['metodos_pago'] = PagosMetodo.objects.all()  
         return context
         
 
@@ -80,10 +80,10 @@ class PerfilEstudianteView(LoginRequiredMixin, View):
             
 
         except ObjectDoesNotExist:
-            # Redireccionar a una página de error si no se encuentra la información
+            
             return redirect('error-page')
         
-        # Renderizar la página con la información del estudiante y sus materias
+        
         return render(request, 'perfil.html', {
             'estudiante': estudiante,        
         })

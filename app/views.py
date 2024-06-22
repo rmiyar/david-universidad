@@ -16,5 +16,5 @@ class CustomLoginView(auth_views.LoginView):
                 profesor = Profesor.objects.get(usuario=auth_user)
                 return reverse_lazy('perfil-profesor')
             except Profesor.DoesNotExist:
-                return reverse_lazy('home')  # Redirigir a una página por defecto si no es estudiante ni profesor
+                return reverse_lazy('home')  
 

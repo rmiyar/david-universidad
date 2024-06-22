@@ -123,3 +123,23 @@ ul li:hover {
     background-color: #4a54f1; /* Un tono más oscuro al pasar el mouse */
 }
 
+.badge {
+    display: inline-block;
+    padding: 0.25em 0.6em;
+    font-size: 75%;
+    font-weight: bold;
+    color: white;
+    background-color: #007bff; /* Azul tipo Bootstrap */
+    border-radius: 0.25rem;
+    line-height: 1;
+    vertical-align: baseline;
+}
+
+.container {
+    margin-top: 20px;
+}
+.table {
+    margin-top: 20px;
+}
+
+

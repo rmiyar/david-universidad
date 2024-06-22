@@ -1,5 +1,5 @@
 from django.contrib import admin
-from app.models import Estudiante, Profesor, Curso, CursoMateria
+from app.models import Estudiante, Profesor, Curso, CursoMateria,PagosMetodo
 from django.db import IntegrityError
 from django.contrib import messages
 from django.core.exceptions import ValidationError
@@ -55,3 +55,12 @@ class CursoMateriaAdmin(admin.ModelAdmin):
     readonly_fields = ('id_materia',)
 
 admin.site.register(CursoMateria, CursoMateriaAdmin)
+
+
+
+class PagosMetodoAdmin(admin.ModelAdmin):
+    list_display = ('id_metodo_pago','tipo_pago')
+    search_fields = ('id_metodo_pago','tipo_pago')
+    readonly_fields = ('id_metodo_pago',)
+
+admin.site.register(PagosMetodo, PagosMetodoAdmin)

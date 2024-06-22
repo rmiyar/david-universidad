@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="profile-container">
+    {% if estudiante %}
+        <h1>Perfil de Estudiante</h1>
+        <p><strong>Nombre:</strong> {{ estudiante.nombre }} {{ estudiante.apellido }}</p>
+        <p><strong>Email:</strong> {{ estudiante.email }}</p>
+        <p><strong>Cédula:</strong> {{ estudiante.cedula }}</p>
+        <p><strong>Teléfono:</strong> {{ estudiante.telefono }}</p>
+        <p><strong>Dirección:</strong> {{ estudiante.direccion }}</p>
+    {% elif profesor %}
+        <h1>Perfil de Profesor</h1>
+        <p><strong>Nombre:</strong> {{ profesor.nombre }} {{ profesor.apellido }}</p>
+        <p><strong>Email:</strong> {{ profesor.email }}</p>
+        <p><strong>Cédula:</strong> {{ profesor.cedula }}</p>
+        <p><strong>Teléfono:</strong> {{ profesor.telefono }}</p>
+        <p><strong>Dirección:</strong> {{ profesor.direccion }}</p>
+        <p><strong>Historial:</strong> {{ profesor.id_historial }}</p>
+        <p><strong>Materia:</strong> {{ profesor.id_materia }}</p>
+    {% else %}
+        <p>No hay información disponible.</p>
+    {% endif %}
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Logout</button>
+    </form>
+</div>
+{% endblock %}

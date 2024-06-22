@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Estudiantes Vinculados a Materias{% endblock %}
+
+{% block header %}Estudiantes Vinculados a Materias{% endblock %}
+
+{% block content %}
+<div class="list-container">
+    <h2>Estudiantes vinculados a tu materia</h2>
+    {% if estudiantes %}
+        <ul>
+            {% for estudiante in estudiantes %}
+            <li>
+                <strong>Nombre:</strong> {{ estudiante.nombre }} {{ estudiante.apellido }}<br>
+                <strong>Cédula:</strong> {{ estudiante.cedula }}<br>
+                <strong>Teléfono:</strong> {{ estudiante.telefono }}<br>
+                <strong>Email:</strong> {{ estudiante.email }}<br>
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay estudiantes vinculados a tu materia.</p>
+    {% endif %}
+</div>
+{% endblock %}

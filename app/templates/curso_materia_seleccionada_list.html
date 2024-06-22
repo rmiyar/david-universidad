@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Listado de Materias Seleccionadas{% endblock %}
+
+{% block header %}Materias Seleccionadas por el Estudiante{% endblock %}
+
+{% block content %}
+<div class="list-container">
+    <h2>Listado de Materias Seleccionadas</h2>
+    <ul>
+        {% for curso in cursos_materia_seleccionada %}
+        <li>
+            <strong>Materia:</strong> {{ curso.materia }}<br>
+            <strong>Código:</strong> {{ curso.codigo_curso }}<br>
+            <strong>Plan de Estudio:</strong> {{ curso.plan_estudio }}<br>
+            <strong>Requisitos Previos:</strong> {{ curso.requisitos_previos }}<br>
+            <strong>Instrumentos:</strong> {{ curso.instrumentos }}<br>
+            <span class="badge">Matriculada</span>
+        </li>
+        {% empty %}
+        <li>No hay materias seleccionadas.</li>
+        {% endfor %}
+    </ul>
+    {% if cursos_materia_seleccionada %}
+    <div class="payment-section">
+        <h3>Total a Pagar</h3>
+        <p>El costo total por las materias seleccionadas es: ${{ total_cost }}.00 USD</p>
+        <form method="post" action="{% url 'procesar-pago' %}">
+            {% csrf_token %}
+            <label for="metodo_pago">Seleccione el método de pago:</label>
+            <select name="metodo_pago" id="metodo_pago">
+                {% for metodo in metodos_pago %}
+                    <option value="{{ metodo.id_metodo_pago }}">{{ metodo.tipo_pago }}</option>
+                {% endfor %}
+            </select>
+            <input type="hidden" name="total_cost" value="{{ total_cost }}">
+            <input type="hidden" name="fecha_pago" value="{{ now|date:"Y-m-d H:i:s" }}">
+            <button type="submit">Procesar Pago</button>
+        </form>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

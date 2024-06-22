@@ -1,5 +1,5 @@
 from django import forms
-from app.models import CursoMateria, EstudianteMateria, Estudiante
+from app.models import CursoMateria, EstudianteMateria, Estudiante,PagosMetodo
 
 class InscripcionMateriaForm(forms.ModelForm):
     materias = forms.ModelMultipleChoiceField(
@@ -17,3 +17,5 @@ class InscripcionMateriaForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         if self.estudiante:
             self.fields['materias'].initial = self.estudiante.materias.all()
+            
+            
